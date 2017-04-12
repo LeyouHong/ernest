@@ -1,13 +1,13 @@
 @environment @environment_delete
 Feature: Ernest environment delete
 
-  Scenario: User with project role deletes an environment
+        Scenario: User with project role deletes an environment
 		Given I setup ernest with target "https://ernest.local"
 		And I'm logged in as "john" / "secret"
 		And the user "john" has "<role>" role on project "myapp"
 		And the user "john" has no role on environment "dev" in project "myapp"
 		When I run ernest with "environment delete myapp dev"
-		Then the output should contain "<output>"
+                Then the output should contain "<output>"
 
 		Examples:
 			|role|output|
