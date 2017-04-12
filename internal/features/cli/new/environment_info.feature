@@ -10,10 +10,10 @@ Feature: Ernest environment info
     Then the output should contain "myapp"
     And the output should contain "dev"
 
-  Examples:
-    |role|
-    |owner|
-    |reader|
+    Examples:
+      |role|
+      |owner|
+      |reader|
 
   Scenario: User with environment role lists environment information
     Given I setup ernest with target "https://ernest.local"
@@ -24,10 +24,10 @@ Feature: Ernest environment info
     Then the output should contain "myapp"
     And the output should contain "dev"
 
-  Examples:
-    |role|
-    |owner|
-    |reader|
+    Examples:
+      |role|
+      |owner|
+      |reader|
 
   Scenario: User with both project and environment roles lists environment information
     Given I setup ernest with target "https://ernest.local"
@@ -38,12 +38,12 @@ Feature: Ernest environment info
     Then the output should contain "myapp"
     And the output should contain "dev"
 
-  Examples:
-    |prj-role|env-role|
-    |owner|owner|
-    |owner|reader|
-    |reader|owner|
-    |reader|reader|
+    Examples:
+      |prj-role|env-role|
+      |owner|owner|
+      |owner|reader|
+      |reader|owner|
+      |reader|reader|
 
   Scenario: User without role lists environment information
     Given I setup ernest with target "https://ernest.local"

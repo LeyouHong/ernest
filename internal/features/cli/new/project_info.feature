@@ -11,10 +11,10 @@ Feature: Ernest project info
     And the output should contain "Environments:"
     And the output should contain "Members:"
 
-  Examples:
-    |role|
-    |owner|
-    |reader|
+    Examples:
+      |role|
+      |owner|
+      |reader|
 
   Scenario: User without role lists project information
     Given I setup ernest with target "https://ernest.local"
