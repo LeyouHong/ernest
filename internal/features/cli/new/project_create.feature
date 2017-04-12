@@ -1,18 +1,18 @@
 @project @project_create
 Feature: Ernest project create
 
-	Background:
+  Background:
     Given I setup ernest with target "https://ernest.local"
 
   Scenario: User creates a project
     Given I'm logged in as "john" / "secret"
-		And project "myapp" does not exists
+    And project "myapp" does not exists
     When I run ernest with "project create myapp"
     Then the output should contain "Project created"
 
   Scenario: User creates a project which already exists
     Given I'm logged in as "john" / "secret"
-		And the project "myapp" exists
+    And the project "myapp" exists
     When I run ernest with "project create myapp"
     Then the output should contain "Specified project already exists, please choose a different one."
 
@@ -23,12 +23,12 @@ Feature: Ernest project create
 
   Scenario: User creates a project with provider details
     Given I'm logged in as "john" / "secret"
-		And project "myapp" does not exists
+    And project "myapp" does not exists
     When I run ernest with "project create myapp --provider <provider>"
     Then the output should contain "<output>"
 
     Examples:
-			|provider|output|
+      |provider|output|
       |aws --access-key 1234 --secret-key 5678|Project created|
       |aws --secret-key 5678|Missing flags: --access-key|
       |aws --access-key 1234|Missing flags: --secret-key|
@@ -46,7 +46,7 @@ Feature: Ernest project create
 
   Scenario: User creates a project with unknown provider type
     Given I'm logged in as "john" / "secret"
-		And project "myapp" does not exists
+    And project "myapp" does not exists
     When I run ernest with "project create myapp --provider fakeProvider"
     Then the output should contain "Specified provider is unknown, please choose a different one."
 

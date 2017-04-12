@@ -15,9 +15,9 @@ Feature: Ernest role unset
     Then the output should contain "Role does not exist"
 
   Scenario: User revokes a role without providing a type and user
-		Given I setup ernest with target "https://ernest.local"
-		And I'm logged in as "admin" / "secret"
-		When I run ernest with "role unset"
+    Given I setup ernest with target "https://ernest.local"
+    And I'm logged in as "admin" / "secret"
+    When I run ernest with "role unset"
     Then the output should contain "help"
 
   # admin
@@ -75,7 +75,7 @@ Feature: Ernest role unset
     And I'm logged in as "john" / "secret"
     And the user "john" has "<prj-role>" role on project "myapp"
     And the user "john" has "<env-role>" role on environment "dev" in project "myapp"
-		And the user "jane" has "<unset-role>" role on environment "dev" in project "myapp"
+    And the user "jane" has "<unset-role>" role on environment "dev" in project "myapp"
     When I run ernest with "role unset <unset-role> jane myapp dev"
     Then the output should contain "<output>"
 

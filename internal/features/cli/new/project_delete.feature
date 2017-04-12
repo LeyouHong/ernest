@@ -1,35 +1,35 @@
 @project @project_delete
 Feature: Ernest project delete
 
-	Background:
+  Background:
     Given I setup ernest with target "https://ernest.local"
 
   Scenario: User with role deletes a project with no environments
     Given I'm logged in as "john" / "secret"
-		And the user "john" has "<role>" role on project "myapp"
+    And the user "john" has "<role>" role on project "myapp"
     When I run ernest with "project delete myapp"
-		Then the output should contain "<output>"
+    Then the output should contain "<output>"
 
-		Examples:
-		  |role|output|
-		  |owner|Project deleted|
-		  |reader|You're not allowed to perform this action, please contact your administrator.|
+    Examples:
+      |role|output|
+      |owner|Project deleted|
+      |reader|You're not allowed to perform this action, please contact your administrator.|
 
-	Scenario: User with role deletes a project with environments
+  Scenario: User with role deletes a project with environments
     Given I'm logged in as "john" / "secret"
-		And the user "john" has "<role>" role on project "myapp"
-		And the environment "dev" exists in project "myapp"
+    And the user "john" has "<role>" role on project "myapp"
+    And the environment "dev" exists in project "myapp"
     When I run ernest with "project delete myapp"
-		Then the output should contain "<output>"
+    Then the output should contain "<output>"
 
-		Examples:
-		  |role|output|
-		  |owner|Project cannot be deleted, still has environment associations.|
-		  |reader|You're not allowed to perform this action, please contact your administrator.|
+    Examples:
+      |role|output|
+      |owner|Project cannot be deleted, still has environment associations.|
+      |reader|You're not allowed to perform this action, please contact your administrator.|
 
   Scenario: User without role deletes a project
     Given I'm logged in as "john" / "secret"
-		And the user "john" has no role on project "myapp"
+    And the user "john" has no role on project "myapp"
     When I run ernest with "project delete myapp"
     Then the output should contain "Project does not exist"
 
@@ -45,13 +45,13 @@ Feature: Ernest project delete
 
   Scenario: Admin deletes a project with no environments
     Given I'm logged in as "admin" / "secret"
-		And the project "myapp" exists
+    And the project "myapp" exists
     When I run ernest with "project delete myapp"
     Then the output should contain "Project deleted"
 
   Scenario: Admin deletes a project with environments
     Given I'm logged in as "admin" / "secret"
-		And the environment "dev" in project "myapp" exists
+    And the environment "dev" in project "myapp" exists
     When I run ernest with "project delete myapp"
     Then the output should contain "Project cannot be deleted, still has environment associations."
 

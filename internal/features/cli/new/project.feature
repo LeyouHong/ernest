@@ -1,8 +1,8 @@
 @project
 Feature: Ernest project
 
-	Background:
-		Given I setup ernest with target "https://ernest.local"
+  Background:
+    Given I setup ernest with target "https://ernest.local"
 
   Scenario: User calls project subcommand
     Given I'm logged in as "john" / "secret"

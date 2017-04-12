@@ -46,7 +46,7 @@ Feature: Ernest role set
     Given I setup ernest with target "https://ernest.local"
     And I'm logged in as "john" / "secret"
     And the user "john" has "<role>" role on project "myapp"
-		And the user "jane" has no role on project "myapp"
+    And the user "jane" has no role on project "myapp"
     When I run ernest with "role set <set-role> jane myapp"
     Then the output should contain "<output>"
 
@@ -60,7 +60,7 @@ Feature: Ernest role set
   Scenario: Admin assigns a project level role to another user
     Given I setup ernest with target "https://ernest.local"
     And I'm logged in as "admin" / "secret"
-		And the user "john" has no role on project "myapp"
+    And the user "john" has no role on project "myapp"
     When I run ernest with "role set <role> john myapp"
     Then the output should contain "<output>"
 
@@ -74,8 +74,8 @@ Feature: Ernest role set
     Given I setup ernest with target "https://ernest.local"
     And I'm logged in as "john" / "secret"
     And the user "john" has "<prj-role>" role on project "myapp"
-		And the user "john" has "<env-role>" role on environment "dev" in project "myapp"
-		And the user "jane" has no role on environment "dev" in project "myapp"
+    And the user "john" has "<env-role>" role on environment "dev" in project "myapp"
+    And the user "jane" has no role on environment "dev" in project "myapp"
     When I run ernest with "role set <set-role> jane myapp dev"
     Then the output should contain "<output>"
 
@@ -92,7 +92,7 @@ Feature: Ernest role set
     Given I setup ernest with target "https://ernest.local"
     And I'm logged in as "admin" / "secret"
     And the environment "dev" in project "myapp" exists
-		And the user "john" has no role on project "myapp"
+    And the user "john" has no role on project "myapp"
     When I run ernest with "role set <role> john myapp dev"
     Then the output should contain "<output>"
 

@@ -1,13 +1,13 @@
 @project @project_list
 Feature: Ernest project list
 
-	Background:
+  Background:
     Given I setup ernest with target "https://ernest.local"
 
   Scenario: User lists projects
     Given I'm logged in as "john" / "secret"
     And the user "john" has "owner" role on project "myapp"
-		And the user "john" has no role on project "myapp2"
+    And the user "john" has no role on project "myapp2"
     When I run ernest with "project list"
     Then the output should contain "myapp"
     But the output should not contain "myapp2"
